@@ -45,6 +45,8 @@ styles = {
 }
 
 app = dash.Dash(__name__, external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
+server = app.server  # <--- Importante para Render
+
 
 app.layout = html.Div(style=styles['container'], children=[
     html.H1("Dashboard Analítico con Plotly", style=styles['title']),
@@ -219,6 +221,6 @@ app.layout = html.Div(style=styles['container'], children=[
     ])
 ])
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8050))
-    app.run()
+    app.run_server(debug=True, host="0.0.0.0", port=port)
